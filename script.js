@@ -26,16 +26,30 @@ const music = new Audio("music.mp3");
 music.loop = true;
 music.volume = 0;
 
-window.addEventListener("load", () => {
-    music.play().then(() => {
-        let v = 0;
-        const fade = setInterval(() => {
-            v += 0.05;
-            music.volume = v;
-            if (v >= 0.9) clearInterval(fade);
-        }, 200);
-    }).catch(()=>{});
-});
+/* Start → Letter + Music */
+startBtn.onclick = async () => {
+
+    // 🎵 Start music on first click (allowed by browser)
+    music.volume = 0;
+    music.play();
+
+    let v = 0;
+    const fade = setInterval(() => {
+        v += 0.05;
+        music.volume = v;
+        if (v >= 0.9) clearInterval(fade);
+    }, 200);
+
+    questionScreen.classList.add("hidden");
+    letterScreen.classList.remove("hidden");
+
+    try {
+        const res = await fetch("letter.txt");
+        letterContent.innerText = await res.text();
+    } catch {
+        letterContent.innerText = "My love,\n\n(Write your letter in letter.txt)";
+    }
+};
 
 /* Start → Letter */
 startBtn.onclick = async () => {
@@ -90,4 +104,5 @@ backToLetterBtn.onclick = () => {
 };
 
 /* Close image viewer */
+
 viewer.onclick = () => viewer.classList.remove("show");

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Intro Screen -->
+<div class="screen" id="questionScreen">
+    <div class="intro-card">
+        <p class="top-text">A SPECIAL MESSAGE FOR</p>
+        <h1 class="main-title">My Love</h1>
+        <p class="quote">“Every love story is beautiful, but ours is my favorite.”</p>
+        <button id="startBtn" class="love-btn">Open Your Love Letter ❤️</button>
+    </div>
+</div>
+
+<!-- Letter Screen -->
+<div class="screen hidden" id="letterScreen">
+    <div class="glass">
+        <h2>💌 A Letter For You</h2>
+        <p id="letterContent"></p>
+        <button id="memoriesBtn" class="yes">See Our Memories 📸</button>
+    </div>
+</div>
+
+<!-- Memories Screen -->
+<div class="screen hidden" id="memoryScreen">
+    <div class="glass">
+        <h2>Our Beautiful Memories ✨</h2>
+        <div id="bubbleArea"></div>
+        <button id="backToLetterBtn" class="yes">⬅️ Back to Letter</button>
+    </div>
+
+    <img id="viewer">
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>

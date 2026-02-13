@@ -55,3 +55,14 @@ backToLetterBtn.onclick = () => {
     memoryScreen.classList.add("hidden");
     letterScreen.classList.remove("hidden");
 };
+const viewer = document.getElementById("viewer");
+const photos = document.querySelectorAll(".photo");
+
+photos.forEach(photo => {
+    photo.onclick = () => {
+        viewer.src = photo.src;
+        viewer.classList.add("show");
+    };
+});
+
+viewer.onclick = () => viewer.classList.remove("show");

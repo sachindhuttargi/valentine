@@ -7,18 +7,9 @@ const letterContent = document.getElementById("letterContent");
 const memoriesBtn = document.getElementById("memoriesBtn");
 const backToLetterBtn = document.getElementById("backToLetterBtn");
 
-/* Hearts */
-setInterval(() => {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerText = "💗";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 25 + 15 + "px";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 10000);
-}, 400);
+const viewer = document.getElementById("viewer");
 
-/* 🎵 Music */
+/* 🎵 Music (works on mobile after click) */
 const music = new Audio("music.mp3");
 music.loop = true;
 music.volume = 0;
@@ -55,7 +46,8 @@ backToLetterBtn.onclick = () => {
     memoryScreen.classList.add("hidden");
     letterScreen.classList.remove("hidden");
 };
-const viewer = document.getElementById("viewer");
+
+/* Photo viewer */
 const photos = document.querySelectorAll(".photo");
 
 photos.forEach(photo => {

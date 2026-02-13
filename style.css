@@ -10,39 +10,6 @@ body{
     color:#5a2a3a;
 }
 
-/* Background glow */
-body::before{
-    content:"";
-    position:absolute;
-    width:200%;
-    height:200%;
-    background:radial-gradient(circle,#ffc1d6,#ff9eb5,#ffd6e7);
-    animation:bgMove 20s linear infinite;
-    z-index:-2;
-}
-@keyframes bgMove{
-    from{transform:translate(-25%,-25%) rotate(0)}
-    to{transform:translate(-25%,-25%) rotate(360deg)}
-}
-body::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    backdrop-filter:blur(60px);
-    z-index:-1;
-}
-
-/* Hearts */
-.heart{
-    position:fixed;
-    bottom:-20px;
-    animation:floatUp 10s linear infinite;
-    opacity:.5;
-}
-@keyframes floatUp{
-    to{transform:translateY(-120vh)}
-}
-
 /* Screens */
 .screen{
     min-height:100vh;
@@ -55,144 +22,86 @@ body::after{
 }
 .hidden{display:none}
 
-/* Text */
-.main-title{font-family:'Great Vibes',cursive;font-size:90px;color:#c2185b}
+.main-title{
+    font-family:'Great Vibes',cursive;
+    font-size:80px;
+    color:#c2185b
+}
+
 button{
-    padding:15px 45px;
+    padding:14px 40px;
     border-radius:40px;
     border:none;
     cursor:pointer;
     font-size:18px;
     background:linear-gradient(45deg,#ff4d88,#ff85a2);
     color:white;
+    margin-top:20px;
 }
 
 /* Glass card */
 .glass{
-    background:rgba(255,255,255,.35);
-    backdrop-filter:blur(25px);
-    border-radius:35px;
-    padding:60px;
+    background:rgba(255,255,255,.4);
+    backdrop-filter:blur(20px);
+    border-radius:30px;
+    padding:50px;
     width:65%;
 }
 
 /* Letter */
 #letterContent{
-    margin:30px 0;
+    margin:25px 0;
     line-height:1.8;
     white-space:pre-wrap;
 }
 
-/* Bubbles */
-#bubbleArea{
-    position:relative;
-    height:450px;
+/* ===== MEMORY PHOTOS ===== */
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 25px;
 }
 
-.bubble{
-    position:absolute;
-    border-radius:50%;
-    overflow:hidden;
-    cursor:pointer;
-    background-size:cover;
-    background-position:center;
-
-    border:3px solid rgba(255,255,255,0.8);
-    box-shadow:
-        inset -15px -20px 35px rgba(255,255,255,0.5),
-        inset 15px 20px 35px rgba(0,0,0,0.1),
-        0 15px 35px rgba(255,105,135,0.4);
-
-    animation:bubbleFloat 8s ease-in-out infinite;
-    transition:transform .3s ease;
+.photo {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 18px;
+    opacity: 0.85;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
 
-/* dreamy photo fade */
-.bubble::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:inherit;
-    opacity:0.8;
-}
-
-.bubble::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:radial-gradient(circle at 30% 30%,
-        rgba(255,255,255,.9),
-        rgba(255,255,255,.2)
-    );
-}
-
-.bubble:hover{
-    transform:scale(1.1);
-}
-
-@keyframes bubbleFloat{
-    50%{transform:translateY(-45px) scale(1.08)}
+.photo:hover {
+    opacity: 1;
+    transform: scale(1.05);
 }
 
 /* Viewer */
-#viewer{
-    position:fixed;
-    top:50%;left:50%;
-    transform:translate(-50%,-50%) scale(0);
-    max-width:45%;
-    max-height:70%;
-    border-radius:25px;
-    transition:.4s;
-    cursor:pointer;
+#viewer {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    max-width: 92%;
+    max-height: 85%;
+    border-radius: 20px;
+    display: none;
+    z-index: 999;
 }
-#viewer.show{
-    transform:translate(-50%,-50%) scale(1);
+
+#viewer.show {
+    display: block;
 }
 
 /* Mobile */
 @media (max-width:768px){
-
     .glass{
         width:90%;
         padding:25px;
     }
-
     .main-title{
-        font-size:48px;
+        font-size:42px;
     }
-
-    #letterContent{
-        font-size:16px;
-    }
-
-    #bubbleArea{
-        height:60vh;
-    }
-
-    #viewer{
-        max-width:90%;
-        max-height:80%;
-    }
-}
-/* ===== MOBILE SAFE MEMORY PHOTOS ===== */
-
-.photo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-    gap: 18px;
-    justify-items: center;
-    margin-top: 20px;
-}
-
-.photo {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
-}
-
-.photo:hover {
-    transform: scale(1.1);
 }
